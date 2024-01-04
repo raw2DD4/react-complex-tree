@@ -204,12 +204,12 @@ export const useOnDragOverTreeHandler = (
       const { depth } = targetItem;
       const targetItemData = items[targetItem.item];
 
-      if (!offset && !canDropOnNonFolder && !targetItemData.isFolder) {
+      if (!offset && !canDropOnNonFolder && targetItemData && !targetItemData.isFolder) {
         onDragAtPosition(undefined);
         return;
       }
 
-      if (!offset && !canDropOnFolder && targetItemData.isFolder) {
+      if (!offset && !canDropOnFolder && targetItemData && targetItemData.isFolder) {
         onDragAtPosition(undefined);
         return;
       }
